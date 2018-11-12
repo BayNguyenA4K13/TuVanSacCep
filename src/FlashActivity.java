@@ -18,7 +18,6 @@ public class FlashActivity {
 			 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//start 1 JFrame moi ==>HomeActivity
 				frame.setVisible(false);
 				new HomeActivity();
 			}

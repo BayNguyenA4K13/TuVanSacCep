@@ -94,7 +94,7 @@ class LuongXuLiMotKetNoiDen extends Thread {
 				
 				
 				while(true) {
-					System.out.println(tenKhachHang + "van dang trong ngóng msgNhan");
+					//System.out.println(tenKhachHang + "van dang trong ngóng msgNhan");
 					String msgNhan = in.readUTF().toString().trim();
 					if( msgNhan.equals(".") || msgNhan == ".") {
 						textArea.append("Thông báo: Khách hàng đã dừng cuộc tư vấn! \n");
@@ -135,8 +135,9 @@ class LuongLangNgheCacClient extends Thread{
 	@Override
 	public void run() {		
 			int thuTu = 0;
-			System.out.println("Dang lang nhe ccac client ket noi den..");
+			
 			while(true) {	
+				System.out.println("Dang lang nhe ccac client ket noi den..");
 				if(server == null) break;
 				Socket soc;
 				try {
@@ -161,6 +162,7 @@ public class HomeActivity extends JFrame{
     static ServerSocket server=null;
     JFrame jFrame = new JFrame("Trang chu");
     JTextArea textArea;
+    LuongLangNgheCacClient luongLangNgheCacClient=null;
 	
 	public HomeActivity() {
 		jFrame.setSize(1000, 600);
@@ -200,6 +202,7 @@ public class HomeActivity extends JFrame{
 				if(server != null) {
 					try {
 						server.close();server = null;
+						luongLangNgheCacClient.tatServer();
 						JOptionPane.showMessageDialog(jFrame, "Đã tắt server");
 						Date date = new Date();
 						textArea.append(date.toString()+"  :"+"Server tư vấn đã tắt..\n");
@@ -231,7 +234,8 @@ public class HomeActivity extends JFrame{
 	
 	public void LangNgheClient() {
 		if(server != null) {
-			new LuongLangNgheCacClient(server).start();
+			luongLangNgheCacClient = new LuongLangNgheCacClient(server);
+			luongLangNgheCacClient.start();
 		}
 	}
 	

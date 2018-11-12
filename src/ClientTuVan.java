@@ -72,7 +72,6 @@ public class ClientTuVan {
 		
 		frame.setDefaultCloseOperation(3);
 		frame.setLocationRelativeTo(null);
-		//frame.setVisible(true);
 	}
 	
 	public void ketNoiDenServer() {
@@ -87,7 +86,7 @@ public class ClientTuVan {
 			textArea.append(tenTrungTam + in.readUTF() + "\n" );
 			
 			while(true) {
-				System.out.println(tenKhachHang + "van dang trong ngóng msgNhan");
+				//System.out.println(tenKhachHang + "van dang trong ngóng msgNhan");
 				String msgNhan = in.readUTF();
 				if( msgNhan.equals(".") || msgNhan == ".") {
 					textArea.append("Thông báo: Trung tâm đã dừng cuộc tư vấn! \n");
